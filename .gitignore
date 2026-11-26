@@ -45,3 +45,10 @@ auth.json
 Thumbs.db
 .idea/
 .vscode/
+
+# Local SSH transport config
+config/ssh_config
+
+# Private SSH material for this runner
+config/spk_identity
+config/known_hosts

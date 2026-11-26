@@ -265,7 +265,7 @@ def attachment_metadata(task, work):
 
 
 def load_measurement(root):
-    """Use the installed shared module's real __file__, never a copy in GAIA."""
+    """Load the measurement module vendored beside this GAIA runner."""
     root = Path(root).resolve(strict=True)
     for path in ('spark_measurement.py','scripts/experiment_config.py','scripts/telemetry_merge.py'):
         if not (root/path).is_file():
@@ -315,7 +315,7 @@ def check_paths(dataset, results, measurement):
 
 
 def probe_code(dataset, measurement, results, task, model_url):
-    hidden = [str(Path(x).resolve()) for x in (dataset, measurement, results)] + ['/root/.codex','/home/claude-GAIA','/home/codex_qwen/DATASET']
+    hidden = [str(Path(x).resolve()) for x in (dataset, measurement, results)] + ['/root/.codex','/home/claude-GAIA',str(GAIA_ROOT/'DATASET')]
     expected = ['attachment'+task.attachment.suffix] if task.attachment else []
     return ('import os, pathlib, subprocess, shutil, json, urllib.request; '
             'assert all(not os.path.exists(p) for p in '+repr(hidden)+'); '
@@ -2189,7 +2189,7 @@ def main():
     parser.add_argument('--model')
     parser.add_argument('--effort', choices=['low', 'medium', 'middle', 'high', 'xhigh', 'max'], default=None)
     parser.add_argument('--dataset-root', type=Path, default=GAIA_ROOT / 'DATASET/GAIA')
-    parser.add_argument('--measurement-root', type=Path, default=Path('/home/codex_qwen'))
+    parser.add_argument('--measurement-root', type=Path, default=GAIA_ROOT)
     parser.add_argument('--year', default='2023')
     parser.add_argument('--split', choices=['validation','test'], default='validation')
     parser.add_argument('--level', type=int, nargs='+', choices=[1,2,3])

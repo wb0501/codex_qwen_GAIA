@@ -1,0 +1,15 @@
+model_catalog_json = "/home/runner/.codex/model_catalog.json"
+model = "Qwen3.6-35B-A3B"
+model_provider = "spark"
+model_context_window = 8192
+model_auto_compact_token_limit = 6000
+approval_policy = "never"
+[model_providers.spark]
+name = "DGX Spark vLLM"
+base_url = "http://127.0.0.1:18000/v1"
+wire_api = "responses"
+requires_openai_auth = false
+supports_websockets = false
+request_max_retries = 0
+stream_max_retries = 0
+stream_idle_timeout_ms = 180000

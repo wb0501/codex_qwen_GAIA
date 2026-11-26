@@ -51,7 +51,6 @@ Codex -> 127.0.0.1:18001 (gateway) -> 127.0.0.1:18000 (SSH) -> Spark vLLM
 - Python 3.13 / 3.14（基线 3.14.4）
 - Codex CLI 0.169.0（`codex` 与 `codex-code-mode-host`）
 - `bwrap`、`dumpcap`、`tshark`、`mitmdump`
-- 公共测量框架：`codex_qwen`
 - 远端推理服务：`waitung-inference-server-measurement`
 
 ## 快速开始
@@ -65,3 +64,15 @@ python run_gaia_codex.py --all --list-tasks
 ## 仓库关系
 
 见 `EXPERIMENT_REPOSITORIES.md`。
+## 自包含测量副本（2026-11-26）
+
+本仓库不再导入 /home/codex_qwen 的任何 Python 模块。以下文件已复制到本仓库：
+
+- spark_measurement.py
+- scripts/experiment_config.py
+- scripts/telemetry_merge.py
+- config/spark/config.toml、config/spark/model_catalog.json
+- config/ssh_config.example（真实 config/ssh_config 被 .gitignore 排除）
+
+codex_qwen 与 codex_qwen_GAIA 是两个独立 workload：HumanEval 与 GAIA。
+两者都只通过 ssh spk 调用 Spark 服务端 spark_capture.py，不互相 import。

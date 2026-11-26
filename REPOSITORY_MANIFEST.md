@@ -49,3 +49,15 @@ __pycache__/                Python 缓存
 - 通过 `ssh spk` 调用服务端 `scripts/spark_capture.py`（worker / collect）
 - 产出七文件；`server_traffic.pcapng`、`server_timeline.jsonl` 由测量框架解析
 - 模型请求经 `exa_tool_gateway.py` 转发到 SSH 隧道
+## 自包含测量副本（2026-11-26）
+
+| 文件 | 用途 |
+|---|---|
+| spark_measurement.py | 随仓库携带的 SSH/双端采集协调副本 |
+| scripts/experiment_config.py | 随仓库携带的 context/profile 配置 |
+| scripts/telemetry_merge.py | 随仓库携带的 V3 telemetry 合并 |
+| config/spark/config.toml、model_catalog.json | Provider 与模型 catalog 模板 |
+| config/ssh_config.example | SSH 连接模板；真实 config/ssh_config 被 .gitignore 排除 |
+
+codex_qwen 与 codex_qwen_GAIA 是两个独立 workload，均通过 ssh spk 调用服务端；
+两者之间没有 Python import 依赖。exa_tool_gateway.py 仍只负责本仓库的模型请求。

@@ -1,0 +1,10 @@
+# Copy to config/ssh_config and adjust for your environment.
+# The real file is ignored by git and must not be committed.
+Host spk
+  HostName spark.example.invalid
+  User your-user
+  Port 22
+  IdentityFile ~/.ssh/id_ed25519
+  UserKnownHostsFile ~/.ssh/known_hosts
+  IdentitiesOnly yes
+  StrictHostKeyChecking yes
