@@ -1,0 +1,47 @@
+# --- Agent workload runners: excluded artifacts ----------------------------
+# Datasets, results and raw logs are never committed.
+DATASET/
+results_codex_gaia/
+results_codex_humaneval/
+results_*/
+*.pcap
+*.pcapng
+*.jsonl
+result.json
+*.log
+*_run.log
+*.bak
+
+# Virtual environments and caches
+.venv/
+.venv-vllm/
+site-packages/
+__pycache__/
+*.py[cod]
+.cache/
+build/
+dist/
+*.egg-info/
+
+# Runtime state and credentials
+.runtime/
+.private/
+*.pem
+*_identity
+id_rsa*
+known_hosts
+.env
+.env.*
+auth.json
+**/auth.json
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
