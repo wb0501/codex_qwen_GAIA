@@ -1,8 +1,8 @@
-# REPOSITORY_MANIFEST — waitung-agent-workload-runners
+# REPOSITORY_MANIFEST — codex_qwen_GAIA
 
 Agent 测量实验的工作负载执行框架。
 
-- Repository: `waitung-agent-workload-runners`
+- Repository: `codex_qwen_GAIA`
 - Local path: `/home/codex_qwen_GAIA`
 - Python: 3.14.4（`.venv` 不纳入版本管理）
 - Codex CLI: 0.169.0

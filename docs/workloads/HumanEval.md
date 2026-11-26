@@ -5,7 +5,7 @@ HumanEval 是此前使用过的工作负载，用于框架回归与对照实验�
 ## 在本框架中的位置
 
 - Runner: `run_humaneval_codex.py`（位于
-  `waitung-agent-traffic-measurement` 仓库根目录）
+  `codex_qwen` 仓库根目录）
 - 用途：验证采集链路、Codex 集成与 V3 telemetry 在单轮代码生成任务上的行为
 - 当前不是主力 workload
 

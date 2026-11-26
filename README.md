@@ -1,4 +1,4 @@
-# waitung-agent-workload-runners
+# codex_qwen_GAIA
 
 Agent 测量实验的**工作负载执行框架**：启动 Agent CLI、调度 Benchmark 任务、
 接入公共测量框架、记录结果。
@@ -9,7 +9,7 @@ Benchmark，而是通过 workload adapter 驱动不同的 Agent 工作负载：
 | Workload | 状态 | 说明 |
 |---|---|---|
 | GAIA | 当前主力 workload | `run_gaia_codex.py`，165 个 validation 任务 |
-| HumanEval | 历史 workload | 由 `waitung-agent-traffic-measurement` 仓库的 `run_humaneval_codex.py` 承接 |
+| HumanEval | 历史 workload | 由 `codex_qwen` 仓库的 `run_humaneval_codex.py` 承接 |
 | 其他 Benchmark | 预留 | 新增 adapter 见 `docs/workloads/ADDING_A_BENCHMARK.md` |
 
 ## 职责
@@ -51,7 +51,7 @@ Codex -> 127.0.0.1:18001 (gateway) -> 127.0.0.1:18000 (SSH) -> Spark vLLM
 - Python 3.13 / 3.14（基线 3.14.4）
 - Codex CLI 0.169.0（`codex` 与 `codex-code-mode-host`）
 - `bwrap`、`dumpcap`、`tshark`、`mitmdump`
-- 公共测量框架：`waitung-agent-traffic-measurement`
+- 公共测量框架：`codex_qwen`
 - 远端推理服务：`waitung-inference-server-measurement`
 
 ## 快速开始

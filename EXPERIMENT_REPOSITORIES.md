@@ -7,17 +7,17 @@
 
 | 仓库 | 路径 | 职责 |
 |---|---|---|
-| `waitung-agent-traffic-measurement` | `/home/codex_qwen`（本机 WSL） | 流量采集、PCAPNG、HTTP/SSE、TCP、Prometheus、事件关联、解析与分析 |
-| `waitung-agent-workload-runners` | `/home/codex_qwen_GAIA`（本机 WSL） | 实验执行框架：Codex 启动、任务调度、实验配置、双端采集调用、结果记录、Benchmark 适配 |
+| `codex_qwen` | `/home/codex_qwen`（本机 WSL） | 流量采集、PCAPNG、HTTP/SSE、TCP、Prometheus、事件关联、解析与分析 |
+| `codex_qwen_GAIA` | `/home/codex_qwen_GAIA`（本机 WSL） | 实验执行框架：Codex 启动、任务调度、实验配置、双端采集调用、结果记录、Benchmark 适配 |
 | `waitung-inference-server-measurement` | `/home/huanglabspk/WaiTung`（DGX Spark） | 推理服务端测量：vLLM 插桩、EngineCore/Scheduler/API Server/SSE、Prometheus、TCP、GPU 与资源监控、模型安全启动与 watchdog |
 
 ## 逻辑依赖
 
 ```text
-waitung-agent-workload-runners
+codex_qwen_GAIA
           |  启动 Agent、调度任务、发起采集
           v
-waitung-agent-traffic-measurement
+codex_qwen
           |  解析 V3 telemetry / 服务端 PCAP
           v
 waitung-inference-server-measurement
@@ -43,9 +43,9 @@ waitung-inference-server-measurement
    - 部署 `scripts/` 与 `vllm_overlay/`
    - `scripts/start_vllm.sh --start --context-window 32768 --detailed-events 1`
    - 确认 `/health` 200、guard `armed`、watchdog 运行
-2. **公共测量框架**：`waitung-agent-traffic-measurement`
+2. **公共测量框架**：`codex_qwen`
    - 本机 WSL 检出，确认 `tshark`/`dumpcap` 可用
-3. **工作负载执行框架**：`waitung-agent-workload-runners`
+3. **工作负载执行框架**：`codex_qwen_GAIA`
    - 检出并安装 `requirements.txt`
    - `python run_gaia_codex.py --check-tools`
    - `python run_gaia_codex.py --all --list-tasks`（165 个 validation 任务）
@@ -70,8 +70,8 @@ waitung-inference-server-measurement
 
 | 仓库 | 基线 commit |
 |---|---|
-| waitung-agent-traffic-measurement | `73589fb031e520f6ee41eaffb99baf747a0ca02d` |
-| waitung-agent-workload-runners | `270a442ae596900556109e0b951a021450ddb6b8` |
+| codex_qwen | `73589fb031e520f6ee41eaffb99baf747a0ca02d` |
+| codex_qwen_GAIA | `270a442ae596900556109e0b951a021450ddb6b8` |
 | waitung-inference-server-measurement | `bb929057f201be1a2d085350d02a18dc642de521` |
 
 三个仓库均为 GitHub Private Repository，默认分支 `main`。
