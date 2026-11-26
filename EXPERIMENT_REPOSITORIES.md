@@ -64,3 +64,14 @@ waitung-inference-server-measurement
 | Exa MCP | `https://mcp.exa.ai/mcp?tools=web_search_exa`（streamable HTTP，匿名） |
 
 每次重要实验需在实验记录中保存三个仓库的 commit SHA。
+\n## 基线 commit\n\n\n\n三个仓库均为 GitHub Private Repository，默认分支 。\n
+
+## 基线 commit
+
+| 仓库 | 基线 commit |
+|---|---|
+| waitung-agent-traffic-measurement | `73589fb031e520f6ee41eaffb99baf747a0ca02d` |
+| waitung-agent-workload-runners | `270a442ae596900556109e0b951a021450ddb6b8` |
+| waitung-inference-server-measurement | `bb929057f201be1a2d085350d02a18dc642de521` |
+
+三个仓库均为 GitHub Private Repository，默认分支 `main`。
